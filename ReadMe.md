@@ -12,5 +12,9 @@ This repository contains the experimental data and source code for the paper:
    git clone https://github.com/tkddnr7671/GL_PVR.git
 
 2. Install dependencies:
-   '''bash
-   conda install ./PhotoVoltaic/conda_environmental.sh
+   ```bash
+   conda install ./PhotoVoltaic/conda_create_environmental.sh
+
+3. Run the main script:
+   ```bash
+   python 
