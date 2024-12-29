@@ -382,16 +382,16 @@ def test(hparams):
     output_dim = model_conf['output_dim']
     nLayers    = model_conf['nLayers']
 
-    if modelType == 'DSLSTM':
+    if modelType == 'LSTM':
+        model = LSTM(input_dim, hidden_dim, output_dim, nLayers, dropout=model_params['dropout'])
+    elif modelType == 'GRU':
+        model = GRU(input_dim, hidden_dim, output_dim, nLayers, dropout=model_params['dropout'])
+    elif modelType == 'RNN':
+        model = RNN(input_dim, hidden_dim, output_dim, nLayers, dropout=model_params['dropout'])
+    elif modelType == 'DSLSTM':
         model = DSLSTM(input_dim, hidden_dim, output_dim, nLayers, dropout=model_params['dropout'])
-    else:
+    elif modelType == 'DSM':
         model = Vanilla_DSM(input_dim, hidden_dim, output_dim, modelType, dropout=model_params['dropout'])
-    #if modelType == 'LSTM':
-    #    model = LSTM(input_dim, hidden_dim, output_dim, nLayers, dropout=model_params['dropout'])
-    #elif modelType == 'GRU':
-    #    model = GRU(input_dim, hidden_dim, output_dim, nLayers, dropout=model_params['dropout'])
-    #else:
-    #    model = RNN(input_dim, hidden_dim, output_dim, nLayers, dropout=model_params['dropout'])
     
     model.load_state_dict(paramSet)
     model.cuda()
