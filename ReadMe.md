@@ -19,14 +19,17 @@ This repository contains the experimental data and source code for the paper:
    Training PV power regression model with solar irradiation
    ```bash
    python main_w_sr.py --mode train --save_dir SAVE_PATH --modelType MODELTYPE --loc_ID 105 --nLayers 3 --seqLeng SEQUENCE_LENGTH
+   ```
 
    Training PV power regression model without solar irradiation
    ```bash
    python main.py --mode train --save_dir SAVE_PATH --modelType MODELTYPE --loc_ID 105 --nLayers 3 --seqLeng SEQUENCE_LENGTH
+   ```
 
    Guided Training PV power regression model without solar irradiation [proposed] 
    ```bash
    python main_wo_sr.py --mode train --save_dir SAVE_PATH --modelType MODELTYPE --loc_ID 105 --nLayers 3 --seqLeng SEQUENCE_LENGTH
+   ```
 
 ## Data Repository 
 1. 'dataset/AWOS/' : Weather recordings for the entire year, from Jan. 1, 2022 to Dec. 31, 2022
