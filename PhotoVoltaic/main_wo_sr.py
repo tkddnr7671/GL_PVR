@@ -137,27 +137,27 @@ def train(hparams):
     input_dim  = model_params['input_dim']
     hidden_dim = model_params['hidden_dim']
     output_dim = model_params['output_dim']
-
-    model = GMT_DSLSTM(input_dim, hidden_dim, output_dim, 3, dropout=model_params['dropout'])
-    #model = GMT(input_dim, hidden_dim, output_dim, modelType, dropout=model_params['dropout'])
-    #if modelType == 'LSTM':
-    #    model = LSTM2(input_dim, hidden_dim, output_dim, dropout=model_params['dropout'])
-    #elif modelType == 'hybrid_lstm':
-    #    model = LSTM(input_dim, hidden_dim, output_dim, 1, dropout=model_params['dropout'])
-    #elif modelType == 'hybrid_rnn':
-    #    model = RNN(input_dim, hidden_dim, output_dim, 1, dropout=model_params['dropout'])
-    #elif modelType == 'gmt_rnn':
-    #    model = GMT(input_dim, hidden_dim, output_dim, 'RNN', dropout=model_params['dropout'])
-    #elif modelType == 'gmt_lstm':
-    #    model = GMT(input_dim, hidden_dim, output_dim, 'LSTM', dropout=model_params['dropout'])
-    #elif modelType == 'gmt_gru':
-    #    model = GMT(input_dim, hidden_dim, output_dim, 'GRU', dropout=model_params['dropout'])
-    #elif modelType == 'gmt_lr':
-    #    model = GMT(input_dim, hidden_dim, output_dim, 'LR', dropout=model_params['dropout'])
-    #elif modelType == 'gmt_rl':
-    #    model = GMT(input_dim, hidden_dim, output_dim, 'RL', dropout=model_params['dropout'])
-    #else:
-    #    model = RNN2(input_dim, hidden_dim, output_dim, dropout=model_params['dropout'])
+    
+    if modelType == 'LSTM':
+        model = LSTM2(input_dim, hidden_dim, output_dim, dropout=model_params['dropout'])
+    elif modelType == 'hybrid_lstm':
+        model = LSTM(input_dim, hidden_dim, output_dim, 1, dropout=model_params['dropout'])
+    elif modelType == 'hybrid_rnn':
+        model = RNN(input_dim, hidden_dim, output_dim, 1, dropout=model_params['dropout'])
+    elif modelType == 'gmt_rnn':
+        model = GMT(input_dim, hidden_dim, output_dim, 'RNN', dropout=model_params['dropout'])
+    elif modelType == 'gmt_lstm':
+        model = GMT(input_dim, hidden_dim, output_dim, 'LSTM', dropout=model_params['dropout'])
+    elif modelType == 'gmt_gru':
+        model = GMT(input_dim, hidden_dim, output_dim, 'GRU', dropout=model_params['dropout'])
+    elif modelType == 'gmt_lr':
+        model = GMT(input_dim, hidden_dim, output_dim, 'LR', dropout=model_params['dropout'])
+    elif modelType == 'gmt_rl':
+        model = GMT(input_dim, hidden_dim, output_dim, 'RL', dropout=model_params['dropout'])
+    elif modelType == 'DSLSTM':
+        model = GMT_DSLSTM(input_dim, hidden_dim, output_dim, 3, dropout=model_params['dropout'])
+    else:
+        model = RNN2(input_dim, hidden_dim, output_dim, dropout=model_params['dropout'])
     model.cuda()
 
     gamma     = learning_params['gamma']
@@ -487,30 +487,28 @@ def test(hparams):
     hidden_dim = model_conf['hidden_dim']
     output_dim = model_conf['output_dim']
 
-    if modelType == 'DSLSTM':
+    if modelType == 'LSTM':
+        model = LSTM2(input_dim, hidden_dim, output_dim, dropout=model_params['dropout'])
+    elif modelType == 'hybrid_lstm':
+        model = LSTM(input_dim, hidden_dim, output_dim, 1, dropout=model_params['dropout'])
+    elif modelType == 'hybrid_rnn':
+        model = RNN(input_dim, hidden_dim, output_dim, 1, dropout=model_params['dropout'])
+    elif modelType == 'gmt_rnn':
+        model = GMT(input_dim, hidden_dim, output_dim, 'RNN', dropout=model_params['dropout'])
+    elif modelType == 'gmt_lstm':
+        model = GMT(input_dim, hidden_dim, output_dim, 'LSTM', dropout=model_params['dropout'])
+    elif modelType == 'gmt_gru':
+        model = GMT(input_dim, hidden_dim, output_dim, 'GRU', dropout=model_params['dropout'])
+    elif modelType == 'gmt_lr':
+        model = GMT(input_dim, hidden_dim, output_dim, 'LR', dropout=model_params['dropout'])
+    elif modelType == 'gmt_rl':
+        model = GMT(input_dim, hidden_dim, output_dim, 'RL', dropout=model_params['dropout'])
+    elif modelType == 'DSLSTM':
         model = GMT_DSLSTM(input_dim, hidden_dim, output_dim, 3, dropout=model_params['dropout'])
     else:
-        model = GMT(input_dim, hidden_dim, output_dim, modelType, dropout=model_params['dropout'])
+        model = RNN2(input_dim, hidden_dim, output_dim, dropout=model_params['dropout'])
 
-    #if modelType == 'LSTM':
-    #    model = LSTM2(input_dim, hidden_dim, output_dim, dropout=model_params['dropout'])
-    #elif modelType == 'hybrid_lstm':
-    #    model = LSTM(input_dim, hidden_dim, output_dim, 1, dropout=model_params['dropout'])
-    #elif modelType == 'hybrid_rnn':
-    #    model = RNN(input_dim, hidden_dim, output_dim, 1, dropout=model_params['dropout'])
-    #elif modelType == 'gmt_lstm':
-    #    model = GMT(input_dim, hidden_dim, output_dim, 'LSTM', dropout=model_params['dropout'])
-    #elif modelType == 'gmt_rnn':
-    #    model = GMT(input_dim, hidden_dim, output_dim, 'RNN', dropout=model_params['dropout'])
-    #elif modelType == 'gmt_gru':
-    #    model = GMT(input_dim, hidden_dim, output_dim, 'GRU', dropout=model_params['dropout'])
-    #elif modelType == 'gmt_lr':
-    #    model = GMT(input_dim, hidden_dim, output_dim, 'LR', dropout=model_params['dropout'])
-    #elif modelType == 'gmt_rl':
-    #    model = GMT(input_dim, hidden_dim, output_dim, 'RL', dropout=model_params['dropout'])
-    #else:
-    #    model = RNN2(input_dim, hidden_dim, output_dim, dropout=model_params['dropout'])
- 
+    
     model.load_state_dict(paramSet)
     model.cuda()
     model.eval()
