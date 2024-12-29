@@ -3,10 +3,14 @@ This repository contains the experimental data and source code for the paper:
 
 ## Contents
 - 'dataset/': Datasets used for the experiments.
-- 'src/': Source code for data preprocessing, model training, and evaluation.
+- 'PhotoVoltaic/': Source code for data loader, model training, and evaluation.
 - 'ReadMe,md': Description of implementation
 
 ## Getting Started
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/Guided-Learning-PV-Regression.git
+   git clone https://github.com/tkddnr7671/GL_PVR.git
+
+2. Install dependencies:
+   '''bash
+   conda install ./PhotoVoltaic/conda_environmental.sh
